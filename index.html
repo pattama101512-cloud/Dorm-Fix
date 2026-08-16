@@ -2203,6 +2203,38 @@ body{
   }
 }
 
+
+/* =========================================================
+   SIDEBAR LOGO DESKTOP V9
+   This is the Dorm Fix logo shown at the top-left sidebar.
+   Enlarge the visible mark without making the sidebar huge.
+   ========================================================= */
+@media (min-width:601px){
+  .sidebar .sb-logo{
+    min-height:82px;
+    align-items:center;
+  }
+
+  .sidebar .sb-logo img,
+  .sidebar .sb-logo svg{
+    width:72px !important;
+    height:72px !important;
+    max-width:none !important;
+    object-fit:contain !important;
+    transform:scale(1.35) !important;
+    transform-origin:center center !important;
+  }
+
+  .sidebar .sb-logo{
+    gap:14px;
+  }
+
+  .sidebar .sb-logo span{
+    font-size:20px !important;
+    font-weight:800;
+  }
+}
+
 </style>
 </head>
 <body>
