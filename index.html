@@ -428,6 +428,614 @@
     .topheader{padding:18px 20px;}
     .stat-grid{grid-template-columns:repeat(2,1fr);}
   }
+
+/* =========================================================
+   RESPONSIVE PATCH — Desktop + Tablet + Mobile
+   Existing desktop layout is preserved.
+   ========================================================= */
+
+/* Prevent accidental horizontal overflow on every viewport */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img, svg, video, canvas {
+  max-width: 100%;
+}
+
+button, input, textarea, select {
+  max-width: 100%;
+}
+
+/* Tablet: keep compact left navigation and make content breathe */
+@media (max-width: 1024px) {
+  .topheader {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .page-body {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .list-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-cols {
+    grid-template-columns: 280px minmax(0, 1fr);
+  }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  :root {
+    --radius-lg: 18px;
+    --radius-md: 14px;
+    --radius-sm: 9px;
+  }
+
+  body {
+    min-width: 320px;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* ---------- Login ---------- */
+  #loginScreen {
+    min-height: 100svh;
+    padding: 16px;
+    align-items: center;
+  }
+
+  .login-shell {
+    width: 100%;
+    min-height: auto;
+    max-width: 480px;
+    display: block;
+    border-radius: 20px;
+  }
+
+  .login-art {
+    display: none;
+  }
+
+  .login-form-wrap {
+    padding: 28px 20px 24px;
+  }
+
+  .login-form-wrap h1 {
+    font-size: 23px;
+  }
+
+  .login-form-wrap .lead {
+    font-size: 13px;
+    margin-bottom: 22px;
+  }
+
+  .field {
+    margin-bottom: 14px;
+  }
+
+  .input-wrap {
+    min-height: 48px;
+    padding: 11px 13px;
+  }
+
+  .input-wrap input,
+  .input-wrap textarea,
+  .input-wrap select {
+    font-size: 16px; /* prevents iOS Safari zoom */
+  }
+
+  .row-between {
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+
+  .btn {
+    min-height: 46px;
+  }
+
+  /* ---------- App shell ---------- */
+  #appShell.show {
+    display: block;
+    min-height: 100svh;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: calc(66px + env(safe-area-inset-bottom));
+    min-height: 66px;
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+    border-radius: 18px 18px 0 0;
+    z-index: 100;
+    box-shadow: 0 -8px 30px rgba(14,37,69,.16);
+    flex-direction: row;
+  }
+
+  .sb-logo,
+  .sb-newbtn,
+  .sb-user,
+  .sb-logout {
+    display: none;
+  }
+
+  .sb-nav {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 3px;
+  }
+
+  .sb-item {
+    min-width: 0;
+    min-height: 52px;
+    padding: 6px 3px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3px;
+    color: rgba(255,255,255,.70);
+    font-size: 10px;
+    line-height: 1.15;
+  }
+
+  .sb-item i {
+    width: auto;
+    font-size: 17px;
+  }
+
+  .sb-item span {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 10px;
+  }
+
+  .sb-item.active::before {
+    display: none;
+  }
+
+  .sb-item.active {
+    background: rgba(255,255,255,.14);
+    color: #fff;
+  }
+
+  .sb-count {
+    position: absolute;
+    top: 2px;
+    right: 18%;
+    font-size: 8px;
+    padding: 1px 5px;
+  }
+
+  .main {
+    width: 100%;
+    min-width: 0;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom));
+  }
+
+  /* ---------- Header ---------- */
+  .topheader {
+    position: sticky;
+    top: 0;
+    padding: 13px 14px;
+    min-height: 64px;
+    gap: 10px;
+  }
+
+  .topheader h1 {
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  .topheader .th-sub {
+    font-size: 10.5px;
+    margin-top: 2px;
+  }
+
+  .th-right {
+    gap: 7px;
+    flex-shrink: 0;
+  }
+
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+  }
+
+  /* ---------- Page content ---------- */
+  .page-body {
+    width: 100%;
+    max-width: none;
+    padding: 18px 14px 28px;
+  }
+
+  .welcome-row {
+    align-items: flex-start;
+    margin-bottom: 18px;
+    gap: 10px;
+  }
+
+  .welcome-row h2 {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  .welcome-row p {
+    font-size: 12.5px;
+  }
+
+  /* ---------- Dashboard cards ---------- */
+  .stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+    margin-bottom: 18px;
+  }
+
+  .stat-card {
+    min-width: 0;
+    padding: 14px 12px;
+    border-radius: 13px;
+  }
+
+  .stat-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .stat-num {
+    font-size: 24px;
+  }
+
+  .stat-label {
+    font-size: 11.5px;
+    line-height: 1.35;
+  }
+
+  .home-cols {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .panel {
+    padding: 15px;
+  }
+
+  .panel-head {
+    margin-bottom: 11px;
+  }
+
+  .panel-head h3 {
+    font-size: 15px;
+  }
+
+  .panel-head a {
+    font-size: 11.5px;
+  }
+
+  .ticket-row {
+    gap: 9px;
+    padding: 11px 4px;
+  }
+
+  .tr-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .tr-title {
+    font-size: 13px;
+  }
+
+  .tr-sub {
+    font-size: 11.5px;
+  }
+
+  .tr-time {
+    font-size: 10.5px;
+  }
+
+  .quick-cats {
+    gap: 8px;
+  }
+
+  .qc-item {
+    padding: 12px 6px;
+  }
+
+  /* ---------- New repair form ---------- */
+  .cat-chip-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .cat-chip {
+    min-width: 0;
+    padding: 14px 7px;
+    border-radius: 12px;
+  }
+
+  .cat-chip i {
+    font-size: 22px;
+    margin-bottom: 7px;
+  }
+
+  .cat-chip span {
+    font-size: 11.5px;
+  }
+
+  .form-grid2 {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .urgency-row {
+    width: 100%;
+    max-width: none;
+    gap: 7px;
+  }
+
+  .urgency-pill {
+    min-width: 0;
+    padding: 10px 3px;
+    font-size: 12px;
+  }
+
+  .photo-row {
+    gap: 8px;
+  }
+
+  .photo-thumb,
+  .photo-add {
+    width: 76px;
+    height: 76px;
+  }
+
+  .success-card {
+    padding: 38px 18px;
+  }
+
+  .success-check {
+    width: 82px;
+    height: 82px;
+  }
+
+  .success-title {
+    font-size: 20px;
+  }
+
+  .ticket-num {
+    font-size: 21px;
+  }
+
+  .success-actions,
+  .btn-row {
+    flex-direction: column;
+  }
+
+  .success-actions .btn,
+  .btn-row .btn {
+    width: 100%;
+  }
+
+  /* ---------- Ticket list ---------- */
+  .tab-row {
+    gap: 6px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 3px;
+    scrollbar-width: none;
+  }
+
+  .tab-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-item {
+    flex: 0 0 auto;
+    padding: 9px 13px;
+    font-size: 12px;
+  }
+
+  .list-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .list-card {
+    padding: 14px;
+  }
+
+  .lc-title {
+    font-size: 14px;
+  }
+
+  /* ---------- Notifications ---------- */
+  .notif-list {
+    width: 100%;
+    max-width: none;
+    gap: 9px;
+  }
+
+  .notif-card {
+    gap: 10px;
+    padding: 13px;
+  }
+
+  .notif-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+  }
+
+  .notif-title {
+    font-size: 13px;
+  }
+
+  .notif-line {
+    font-size: 11.5px;
+  }
+
+  .notif-time {
+    font-size: 10.5px;
+  }
+
+  /* ---------- Profile ---------- */
+  .profile-cols {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .profile-hero {
+    padding: 24px 16px;
+  }
+
+  .info-card {
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+
+  .info-line {
+    gap: 14px;
+    font-size: 13px;
+  }
+
+  .info-line span:last-child {
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  .menu-item {
+    padding: 13px 14px;
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+
+  /* ---------- Modal ---------- */
+  .modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-box {
+    width: 100%;
+    max-width: none;
+    max-height: 92svh;
+    border-radius: 20px 20px 0 0;
+    padding: 20px 16px calc(22px + env(safe-area-inset-bottom));
+  }
+
+  .modal-head {
+    margin-bottom: 16px;
+  }
+
+  .modal-head .mid {
+    font-size: 17px;
+  }
+
+  .modal-tabs {
+    overflow-x: auto;
+    gap: 5px;
+    scrollbar-width: none;
+  }
+
+  .modal-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mtab {
+    flex: 0 0 auto;
+    margin-right: 13px;
+    font-size: 13px;
+  }
+
+  .detail-row {
+    grid-template-columns: 92px minmax(0, 1fr);
+    font-size: 12.5px;
+    gap: 5px 8px;
+  }
+
+  .est-box {
+    padding: 13px;
+  }
+
+  /* ---------- Toast ---------- */
+  .toast {
+    left: 14px;
+    right: 14px;
+    bottom: calc(76px + env(safe-area-inset-bottom));
+    width: auto;
+    max-width: none;
+    transform: translateY(20px);
+    white-space: normal;
+    text-align: center;
+    padding: 11px 14px;
+  }
+
+  .toast.show {
+    transform: translateY(0);
+  }
+}
+
+/* Very small phones */
+@media (max-width: 380px) {
+  .page-body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .topheader {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .stat-grid {
+    gap: 7px;
+  }
+
+  .stat-card {
+    padding: 12px 10px;
+  }
+
+  .cat-chip {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .sb-item span {
+    font-size: 9px;
+  }
+}
+
 </style>
 </head>
 <body>
