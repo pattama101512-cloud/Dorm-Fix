@@ -1755,6 +1755,142 @@ body{
   }
 }
 
+
+/* =========================================================
+   MOBILE NAV V6 — 5 MENU ITEMS ON ONE ROW
+   The app has 5 navigation items; the previous 4-column
+   grid caused the 5th item to wrap out of the visible bar.
+   ========================================================= */
+@media (max-width:600px){
+  .sidebar{
+    display:flex !important;
+    flex-direction:row !important;
+    position:fixed !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    top:auto !important;
+    width:100% !important;
+    height:calc(84px + env(safe-area-inset-bottom)) !important;
+    min-height:84px !important;
+    padding:7px 6px calc(7px + env(safe-area-inset-bottom)) !important;
+    box-sizing:border-box !important;
+    z-index:9999 !important;
+    overflow:hidden !important;
+    border-radius:18px 18px 0 0 !important;
+  }
+
+  .sidebar .sb-nav{
+    display:grid !important;
+    grid-template-columns:repeat(5, minmax(0,1fr)) !important;
+    width:100% !important;
+    height:70px !important;
+    min-height:70px !important;
+    flex:1 1 auto !important;
+    gap:2px !important;
+    margin:0 !important;
+    padding:0 !important;
+    overflow:visible !important;
+  }
+
+  .sidebar .sb-item{
+    position:relative !important;
+    display:flex !important;
+    width:100% !important;
+    min-width:0 !important;
+    height:68px !important;
+    min-height:68px !important;
+    max-height:68px !important;
+    margin:0 !important;
+    padding:6px 2px 5px !important;
+    box-sizing:border-box !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:3px !important;
+    overflow:hidden !important;
+    border-radius:12px !important;
+  }
+
+  .sidebar .sb-item i{
+    display:flex !important;
+    width:22px !important;
+    height:23px !important;
+    min-height:23px !important;
+    flex:0 0 23px !important;
+    align-items:center !important;
+    justify-content:center !important;
+    font-size:18px !important;
+  }
+
+  .sidebar .sb-item > span:not(.sb-count){
+    display:block !important;
+    width:100% !important;
+    max-width:100% !important;
+    min-width:0 !important;
+    min-height:13px !important;
+    line-height:13px !important;
+    margin:0 !important;
+    padding:0 !important;
+    overflow:hidden !important;
+    text-overflow:ellipsis !important;
+    white-space:nowrap !important;
+    text-align:center !important;
+    font-size:10px !important;
+    font-weight:600 !important;
+  }
+
+  .sidebar .sb-item.active{
+    background:rgba(255,255,255,.16) !important;
+    color:#fff !important;
+    box-shadow:inset 3px 0 0 var(--gold-500) !important;
+  }
+
+  .sidebar .sb-item.active::before{
+    display:none !important;
+  }
+
+  .sidebar .sb-count{
+    display:flex !important;
+    position:absolute !important;
+    top:1px !important;
+    right:7px !important;
+    width:18px !important;
+    height:18px !important;
+    min-width:18px !important;
+    padding:0 !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border-radius:50% !important;
+    font-size:9px !important;
+    line-height:18px !important;
+    z-index:10 !important;
+  }
+
+  .main{
+    padding-bottom:calc(96px + env(safe-area-inset-bottom)) !important;
+  }
+
+  .toast{
+    bottom:calc(98px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+@media (max-width:350px){
+  .sidebar .sb-item > span:not(.sb-count){
+    font-size:9px !important;
+  }
+
+  .sidebar .sb-item{
+    padding-left:1px !important;
+    padding-right:1px !important;
+  }
+
+  .sidebar .sb-item i{
+    font-size:17px !important;
+  }
+}
+
 </style>
 </head>
 <body>
