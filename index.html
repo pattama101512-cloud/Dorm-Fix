@@ -2178,6 +2178,31 @@ body{
   }
 }
 
+
+/* =========================================================
+   LOGIN LOGO DESKTOP V8
+   The PNG contains transparent padding, so changing only the
+   box/image dimensions barely changes the visible mark.
+   Scale the actual rendered image instead.
+   Mobile keeps its own logo sizing below 600px.
+   ========================================================= */
+@media (min-width:601px){
+  .login-art .login-badge{
+    width:110px !important;
+    height:110px !important;
+    overflow:visible !important;
+  }
+
+  .login-art .login-badge img,
+  .login-art .login-badge svg{
+    width:160px !important;
+    height:160px !important;
+    max-width:none !important;
+    transform:scale(1.45) !important;
+    transform-origin:center center !important;
+  }
+}
+
 </style>
 </head>
 <body>
